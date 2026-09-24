@@ -1,0 +1,12 @@
+{
+  "name": "app-sem-mvc-anotacoes",
+  "version": "1.0.0",
+  "description": "Exemplo SEM MVC - contraste (aula-teste SENAI)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

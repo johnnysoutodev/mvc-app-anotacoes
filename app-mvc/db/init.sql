@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS notas (
+  id SERIAL PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL,
+  conteudo TEXT,
+  criado_em TIMESTAMP DEFAULT NOW()
+);
