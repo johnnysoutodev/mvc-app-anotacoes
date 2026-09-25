@@ -41,14 +41,14 @@ Capacitar o aluno a **desenvolver uma funcionalidade de uma aplicação web segu
 | Etapa | Tempo | O que acontece | Recurso |
 |---|---|---|---|
 | 1. Abertura e problema | 3 min | Pergunta disparadora + mostrar rapidamente o `app-sem-mvc/server.js` (tudo misturado) | Slides 1–2, VS Code |
-| 2. Conceito essencial | 5 min | O que é MVC, papel de cada camada, fluxo de uma requisição | Slides 3–6 |
-| 3. **Prática: desenvolvendo em MVC** | 14 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada, com perguntas à turma a cada passo | Slides 7–12, VS Code, navegador |
-| 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 13 + link do quiz |
-| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + referências para estudo | Slides 14–15 |
+| 2. Conceito essencial | 7 min | O que é MVC, papel de cada camada (com analogia do restaurante), fluxo de uma requisição e vantagens | Slides 3–10 |
+| 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada, com perguntas à turma a cada passo | Slides 11–16, VS Code, navegador |
+| 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 17 + Kahoot |
+| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + referências para estudo | Slides 18–19 |
 
-### Detalhamento da prática (etapa 3 — 14 min)
+### Detalhamento da prática (etapa 3 — 12 min)
 
-**3.1 Tour pela estrutura (3 min)** — mostrar no VS Code:
+**3.1 Tour pela estrutura (2 min)** — mostrar no VS Code:
 ```
 app-mvc/
 ├── db/init.sql                      → estrutura da tabela (banco)
@@ -72,12 +72,12 @@ Rodar o app e criar uma nota para mostrar funcionando.
 | 4 | View | `public/script.js` | Botão "Excluir" em cada nota, que chama `DELETE /api/notas/:id` e recarrega a lista |
 | 5 | Teste | Navegador | Criar uma nota, excluir e ver a lista atualizar |
 
-> **Preparação antes da aula:** o repositório já contém o código do Model, Controller e Rota de `remover` (serve de "cola"). Para a demonstração ao vivo, apague esses trechos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescreva-os durante a aula. Código do passo 4 (View) está no slide 11 de `conteudo-slides-mvc.md`.
+> **Preparação antes da aula:** o repositório já contém o código do Model, Controller e Rota de `remover` (serve de "cola"). Para a demonstração ao vivo, apague esses trechos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescreva-os durante a aula. Código do passo 4 (View) está no slide 14 de `conteudo-slides-mvc.md`.
 
-**3.3 Pergunta de fechamento da prática (2 min)** — *"Se amanhã o cliente pedir para o botão ficar vermelho, qual arquivo eu altero? E se pedir que só notas com mais de 1 dia possam ser excluídas?"* (Resposta: View / Model.)
+**3.3 Pergunta de fechamento da prática (1 min)** — *"Se amanhã o cliente pedir para o botão ficar vermelho, qual arquivo eu altero? E se pedir que só notas com mais de 1 dia possam ser excluídas?"* (Resposta: View / Model.)
 
 ## 7. Recursos Didáticos
-- Slides (PowerPoint ou Google Apresentações) — textos em `conteudo-slides-mvc.md`
+- Slides (Google Apresentações) — arquivo `aula-mvc.pptx`; textos e falas em `conteudo-slides-mvc.md`
 - VS Code com o projeto `app-mvc` aberto e o banco rodando (`docker compose up -d`)
 - Navegador em `http://localhost:3000`
 - Projeto `app-sem-mvc` para contraste
