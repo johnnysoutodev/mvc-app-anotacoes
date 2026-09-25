@@ -41,15 +41,40 @@ li {
 
 li {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+}
+
+.texto {
+  flex: 1;
+}
+
+.texto strong {
+  font-size: 1.1rem;
+}
+
+.texto p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #555;
 }
 
 li button {
   background: #c8553d;
   padding: 4px 10px;
   font-size: 0.9rem;
+}
+
+li button.estrela {
+  background: none;
+  color: #999;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+li button.estrela.favorita {
+  color: #f2b705;
 }
 
 #mensagem {

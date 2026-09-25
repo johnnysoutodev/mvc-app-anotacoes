@@ -28,4 +28,13 @@ async function remover(requisicao, resposta) {
   }
 }
 
-module.exports = { listar, criar, remover };
+async function favoritar(requisicao, resposta) {
+  try {
+    const nota = await Nota.alternarFavorita(requisicao.params.id);
+    resposta.json(nota);
+  } catch (erro) {
+    resposta.status(400).json({ erro: erro.message });
+  }
+}
+
+module.exports = { listar, criar, remover, favoritar };

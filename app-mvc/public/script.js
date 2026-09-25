@@ -10,10 +10,28 @@ async function carregarNotas() {
   notas.forEach((nota) => {
     const item = document.createElement("li");
 
-    const texto = document.createElement("span");
-    texto.textContent = nota.conteudo
-      ? `${nota.titulo} - ${nota.conteudo}`
-      : nota.titulo;
+    const estrela = document.createElement("button");
+    estrela.className = nota.favorita ? "estrela favorita" : "estrela";
+    estrela.textContent = nota.favorita ? "★" : "☆";
+    estrela.title = nota.favorita ? "Remover dos favoritos" : "Favoritar";
+    estrela.onclick = async () => {
+      await fetch(`/api/notas/${nota.id}/favorita`, { method: "PATCH" });
+      carregarNotas();
+    };
+    item.appendChild(estrela);
+
+    const texto = document.createElement("div");
+    texto.className = "texto";
+
+    const titulo = document.createElement("strong");
+    titulo.textContent = nota.titulo;
+    texto.appendChild(titulo);
+
+    if (nota.conteudo) {
+      const conteudo = document.createElement("p");
+      conteudo.textContent = nota.conteudo;
+      texto.appendChild(conteudo);
+    }
     item.appendChild(texto);
 
     const botao = document.createElement("button");
