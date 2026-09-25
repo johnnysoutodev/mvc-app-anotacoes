@@ -17,27 +17,41 @@ Apresentação pronta no PowerPoint: `aula-mvc.pptx` (19 slides, com as falas na
 ## Slide 2 — O monólito
 **Título:** O monólito: tudo misturado
 **Texto do slide:**
-- Tela, regras e banco de dados no mesmo arquivo
-- Mudar o visual pode quebrar a regra de negócio
+- Tela, regras e banco no mesmo arquivo
+- Mudar o visual pode quebrar a regra
 - Difícil de testar, manter e dividir na equipe
+- Destaque: **1 arquivo · 153 linhas** — 4 rotas · 5 consultas SQL · HTML e CSS
 - **Situação:** organizar o app de anotações em MVC e criar a função "Excluir nota"
 
-**Código ao lado (cada linha pintada com a cor da camada a que pertence):**
+**Código ao lado (trechos reais do `app-sem-mvc/server.js`, cada linha pintada com a cor da camada):**
 ```js
-// app-sem-mvc/server.js
-app.get("/", async (req, res) => {           // vermelho = Controller
-  const r = await pool.query(                // verde    = Model (dados + regra)
+// app-sem-mvc/server.js (trechos)
+const pool = new Pool({ host: process.env.DB_HOST, … });   // verde = Model
+app.get("/", async (requisicao, resposta) => {             // vermelho = Controller
+  const resultado = await pool.query(                      // verde = Model (dados + regra)
     "SELECT * FROM notas ORDER BY " +
     "favorita DESC, criado_em DESC");
-  const html = r.rows.map((n) =>             // amarelo  = View
-    `<li>${n.titulo}</li>`).join("");
-  res.send(`<ul>${html}</ul>`);
+  const linhas = resultado.rows.map((nota) => `            // amarelo = View
+    <li><form action="/notas/${nota.id}/favorita">
+      <strong>${escapar(nota.titulo)}</strong>
+      <form action="/notas/${nota.id}/excluir">
+    </li>`).join("");
+  resposta.send(`<html><style>body { … }</style>
+    <form method="POST" action="/notas">…</form>
+    <ul>${linhas}</ul></html>`);
 });
+app.post("/notas", async (requisicao, resposta) => {        // vermelho = Controller
+  const { titulo, conteudo } = requisicao.body;
+  if (!titulo) return resposta.redirect("/?erro=…");       // verde = Model (regra)
+  await pool.query("INSERT INTO notas …", [titulo]);
+  resposta.redirect("/");
+});
+// … + rotas de excluir e favoritar, tudo igual
 ```
 
-*(Mostrar ao vivo: `app-sem-mvc/server.js`)*
+*(Mostrar ao vivo: `app-sem-mvc/server.js`, rolando o arquivo inteiro)*
 
-> *Fala:* "Olhem essa rota do monólito: na mesma função está a consulta ao banco, a regra de negócio — favoritas primeiro — e o HTML da tela. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é dado e regra, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. Pergunta pra vocês: como organizariam esse código?"
+> *Fala:* "Olhem esse arquivo: é o mesmo sistema de notas, com as mesmas funções, mas tudo num arquivo só — 153 linhas. Na mesma rota está a conexão com o banco, o SQL, a regra de negócio — favoritas primeiro —, a validação e o HTML da tela, até o CSS. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é dado e regra, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. Pergunta pra vocês: como organizariam esse código?"
 
 ## Slide 3 — O que é MVC
 **Título:** MVC = Model, View, Controller
