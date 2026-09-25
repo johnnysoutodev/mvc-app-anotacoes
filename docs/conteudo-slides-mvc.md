@@ -1,8 +1,8 @@
 # Conteúdo dos Slides — Como desenvolver aplicações web na arquitetura MVC
 
-Cada slide tem: **Título**, **Texto do slide** (o que colocar no PowerPoint/Google Apresentações) e **Fala** (notas do apresentador — cole no campo "Anotações do orador").
+Cada slide tem: **Título**, **Texto do slide** (o que aparece no slide) e **Fala** (notas do apresentador — cole no campo "Anotações do orador").
 O código mostrado é o do projeto real `app-mvc/` (Node.js + Express + PostgreSQL).
-Arquivo pronto para importar no Google Apresentações: `aula-mvc.pptx` (19 slides, com as falas nas anotações do orador).
+Apresentação pronta no PowerPoint: `aula-mvc.pptx` (19 slides, com as falas nas anotações do orador). Versão em PDF para envio: `aula-mvc.pdf`.
 
 ---
 
@@ -223,8 +223,9 @@ item.appendChild(botao);
 - **Model** = dados e regras | **View** = tela | **Controller** = orquestra
 - Receita: Model → Controller → Rota → View → Testar
 - Vantagens: manutenção fácil, testes isolados, equipe trabalhando em paralelo
+- **Desafio para casa:** desenvolva a função "Editar nota" seguindo a mesma receita — Model → Controller → Rota → View → Testar.
 
-> *Fala:* "Hoje vocês desenvolveram uma funcionalidade inteira em MVC. Com essa receita vocês conseguem criar editar, buscar, qualquer coisa — sempre camada por camada."
+> *Fala:* "Hoje vocês desenvolveram uma funcionalidade inteira em MVC. Com essa receita vocês conseguem criar editar, buscar, qualquer coisa — sempre camada por camada. Fica o desafio: desenvolver o Editar nota seguindo a mesma receita."
 
 ## Slide 19 — Para estudar mais
 **Título:** Referências

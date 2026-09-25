@@ -44,7 +44,7 @@ Capacitar o aluno a **desenvolver uma funcionalidade de uma aplicação web segu
 | 2. Conceito essencial | 7 min | O que é MVC, papel de cada camada (com analogia do restaurante), fluxo de uma requisição e vantagens | Slides 3–10 |
 | 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada, com perguntas à turma a cada passo | Slides 11–16, VS Code, navegador |
 | 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 17 + Kahoot |
-| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + referências para estudo | Slides 18–19 |
+| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + desafio para casa ("Editar nota") + referências para estudo | Slides 18–19 |
 
 ### Detalhamento da prática (etapa 3 — 12 min)
 
@@ -77,7 +77,7 @@ Rodar o app e criar uma nota para mostrar funcionando.
 **3.3 Pergunta de fechamento da prática (1 min)** — *"Se amanhã o cliente pedir para o botão ficar vermelho, qual arquivo eu altero? E se pedir que só notas com mais de 1 dia possam ser excluídas?"* (Resposta: View / Model.)
 
 ## 7. Recursos Didáticos
-- Slides (Google Apresentações) — arquivo `aula-mvc.pptx`; textos e falas em `conteudo-slides-mvc.md`
+- Slides (PowerPoint) — arquivo `aula-mvc.pptx` (PDF: `aula-mvc.pdf`); textos e falas em `conteudo-slides-mvc.md`
 - VS Code com o projeto `app-mvc` aberto e o banco rodando (`docker compose up -d`)
 - Navegador em `http://localhost:3000`
 - Projeto `app-sem-mvc` para contraste

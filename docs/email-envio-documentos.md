@@ -6,7 +6,7 @@
 
 **Anexos:**
 - [ ] Plano de aula (PDF) — exportar `plano-de-aula.md`
-- [ ] Apresentação da aula (PDF ou link do Google Apresentações) — montada a partir de `conteudo-slides-mvc.md`
+- [ ] Apresentação da aula (PDF) — `aula-mvc.pdf`, exportado do PowerPoint
 - [ ] Currículo atualizado
 - [ ] Comprovantes de escolaridade
 - [ ] Comprovantes de experiência profissional
