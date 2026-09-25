@@ -6,7 +6,7 @@ Projeto de apoio para a aula-teste prática sobre MVC (25/09/2026).
 
 - `docs/` — plano de aula (com quiz e referências), conteúdo dos slides, e-mails (confirmação e envio dos documentos)
 - `app-mvc/` — app de anotações estruturado em MVC (Node + Express + Postgres)
-- `app-sem-mvc/` — mesma funcionalidade, tudo misturado em um único arquivo (exemplo de contraste)
+- `app-sem-mvc/` — mesmas funcionalidades e mesmo banco, tudo misturado em um único arquivo (exemplo de contraste)
 
 ## Como rodar a versão MVC
 
@@ -33,9 +33,12 @@ Para derrubar o banco depois: `docker compose down` (ou `docker compose down -v`
 
 ## Como rodar a versão sem MVC (contraste)
 
+Usa o mesmo banco de dados da versão MVC (suba o Docker antes):
+
 ```bash
 cd app-sem-mvc
 npm install
+cp .env.example .env
 npm start
 ```
 
@@ -43,6 +46,8 @@ Abrir [http://localhost:3001](http://localhost:3001)
 
 ## Observação
 
-A versão sem MVC usa um array em memória (sem banco de dados) — é só para
-ilustrar visualmente o contraste de organização de código, não precisa
-rodar em paralelo com a versão MVC durante a demonstração.
+As duas versões têm as mesmas funcionalidades (criar, listar, favoritar e
+excluir notas) e usam a mesma tabela no PostgreSQL. A diferença é só a
+organização do código: na versão sem MVC, SQL, regras de negócio e HTML
+ficam juntos em um único arquivo (`server.js`). As duas podem rodar ao
+mesmo tempo (portas 3000 e 3001) e mostram as mesmas notas.

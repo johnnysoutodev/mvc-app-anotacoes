@@ -25,20 +25,19 @@ Apresentação pronta no PowerPoint: `aula-mvc.pptx` (19 slides, com as falas na
 **Código ao lado (cada linha pintada com a cor da camada a que pertence):**
 ```js
 // app-sem-mvc/server.js
-app.post("/notas", (req, res) => {
-  const { titulo } = req.body;        // vermelho = Controller
-  if (!titulo)                        // verde    = Model (regra)
-    return res.send("Erro");
-  notas.push({ titulo });             // verde    = Model (dados)
-  res.send(`<html>                    // amarelo  = View
-    <ul>${linhas}</ul>
-  </html>`);
+app.get("/", async (req, res) => {           // vermelho = Controller
+  const r = await pool.query(                // verde    = Model (dados + regra)
+    "SELECT * FROM notas ORDER BY " +
+    "favorita DESC, criado_em DESC");
+  const html = r.rows.map((n) =>             // amarelo  = View
+    `<li>${n.titulo}</li>`).join("");
+  res.send(`<ul>${html}</ul>`);
 });
 ```
 
 *(Mostrar ao vivo: `app-sem-mvc/server.js`)*
 
-> *Fala:* "Olhem esse arquivo, um monólito: o HTML, a validação e os dados estão todos juntos na mesma rota. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é regra e dado, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. Pergunta pra vocês: como organizariam esse código?"
+> *Fala:* "Olhem essa rota do monólito: na mesma função está a consulta ao banco, a regra de negócio — favoritas primeiro — e o HTML da tela. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é dado e regra, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. Pergunta pra vocês: como organizariam esse código?"
 
 ## Slide 3 — O que é MVC
 **Título:** MVC = Model, View, Controller
