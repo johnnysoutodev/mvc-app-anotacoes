@@ -10,17 +10,26 @@ Apresentação pronta no PowerPoint: `aula-mvc.pptx` (19 slides, com as falas na
 **Título:** Como desenvolver aplicações web na arquitetura MVC
 **Texto do slide:**
 - Instrutor: Johnny Souto
-- Curso Técnico em Desenvolvimento de Sistemas — SENAI-SP
+- Aula Teste Senai – SENAI/SP
 
 > *Fala:* "Boa tarde, turma! Hoje vocês vão sair daqui sabendo não só o que é MVC, mas como desenvolver uma funcionalidade de verdade usando essa arquitetura."
 
-## Slide 2 — O monólito
-**Título:** O monólito: tudo misturado
+## Slide 2 — A dor da manutenção
+**Título:** A dor da manutenção
 **Texto do slide:**
-- Tela, regras e banco no mesmo arquivo
-- Mudar o visual pode quebrar a regra
-- Difícil de testar, manter e dividir na equipe
+- *"O cliente pediu só para trocar a cor do botão Excluir. Mas, para isso, você abre um arquivo onde também estão o SQL do banco e as regras do sistema. E se você quebrar algo sem querer?"*
+- **Manutenção:** todo o código em um só lugar: qualquer mudança mexe no todo.
+- **Risco:** alterar a tela pode quebrar a regra de negócio.
+- **Equipe:** duas pessoas no mesmo arquivo geram conflito.
+- Vamos ver como é esse código na prática →
+
+> *Fala:* "Antes de mostrar código, uma pergunta: quando vocês criam um sistema, como organizam os arquivos? Tudo num arquivo só, ou separam por responsabilidade? Imaginem: o cliente pediu só para trocar a cor do botão Excluir. Para isso, vocês abrem um arquivo onde também estão o SQL do banco e as regras do sistema. E se quebrarem algo sem querer? Essa é a dor da manutenção: com tudo num lugar só, qualquer mudança mexe no todo, alterar a tela pode quebrar uma regra, e duas pessoas não conseguem trabalhar no mesmo arquivo sem conflito. Vamos ver como é esse código na prática."
+
+## Slide 3 — O monólito sem organização
+**Título:** O monólito sem organização: tudo misturado
+**Texto do slide:**
 - Destaque: **1 arquivo · 153 linhas** — 4 rotas · 5 consultas SQL · HTML e CSS
+- Mesmo sistema do app MVC: mesmas funções, mesmo banco de dados. Só muda a organização.
 - **Situação:** organizar o app de anotações em MVC e criar a função "Excluir nota"
 
 **Código ao lado (trechos reais do `app-sem-mvc/server.js`, cada linha pintada com a cor da camada):**
@@ -51,18 +60,19 @@ app.post("/notas", async (requisicao, resposta) => {        // vermelho = Contro
 
 *(Mostrar ao vivo: `app-sem-mvc/server.js`, rolando o arquivo inteiro)*
 
-> *Fala:* "Olhem esse arquivo: é o mesmo sistema de notas, com as mesmas funções, mas tudo num arquivo só — 153 linhas. Na mesma rota está a conexão com o banco, o SQL, a regra de negócio — favoritas primeiro —, a validação e o HTML da tela, até o CSS. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é dado e regra, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. Pergunta pra vocês: como organizariam esse código?"
+> *Fala:* "Olhem esse arquivo: é o mesmo sistema de notas do app MVC, com as mesmas funções, mas tudo num arquivo só — 153 linhas. Na mesma rota está a conexão com o banco, o SQL, a regra de negócio — favoritas primeiro —, a validação e o HTML da tela, até o CSS. Funciona? Funciona. Mas se eu precisar mudar só o visual, vou mexer no mesmo lugar onde está a regra. Isso é risco. Reparem nas cores: vermelho recebe o pedido, verde é dado e regra, amarelo é tela. As três responsabilidades já estão aí, só que embaralhadas. É isso que torna a manutenção difícil."
 
-## Slide 3 — O que é MVC
-**Título:** MVC = Model, View, Controller
+## Slide 4 — A solução
+**Título:** A solução: arquitetura MVC
 **Texto do slide:**
-- Padrão de arquitetura criado por Trygve Reenskaug (Xerox PARC, 1979)
-- Divide a aplicação em 3 responsabilidades
-- Cada camada muda por um único motivo
+- Para resolver essa dor, a engenharia de software usa padrões de arquitetura. O MVC separa a aplicação em três responsabilidades.
+- Visual: à esquerda, um bloco com faixas vermelhas, verdes e amarelas misturadas ("1 arquivo, tudo misturado") → seta → à direita, três blocos separados: **Model** (dados e regras), **View** (tela), **Controller** (orquestra) — "3 camadas, cada uma muda por um único motivo"
+- Criado por Trygve Reenskaug (Xerox PARC, 1979) para interfaces gráficas
+- Adaptado para a web por frameworks como Spring, ASP.NET, Rails e Laravel
 
-> *Fala:* "MVC é uma forma de dividir o código por responsabilidade. Surgiu no fim dos anos 70 e hoje está em frameworks como Spring, ASP.NET, Laravel, Rails e Express."
+> *Fala:* "Para resolver essa dor, a engenharia de software usa padrões de arquitetura. Um dos mais usados é o MVC: Model, View e Controller. Ele pega aquele arquivo com tudo misturado e separa em três responsabilidades, e cada camada passa a mudar por um único motivo. Um detalhe importante: o MVC não elimina o monólito; ele organiza o monólito por dentro. É exatamente o que vamos fazer com esse código. O MVC foi criado por Trygve Reenskaug em 1979, na Xerox PARC, para interfaces gráficas, e depois foi adaptado para a web. Hoje está em frameworks como Spring, ASP.NET, Rails, Laravel e também em projetos com Express, como o nosso."
 
-## Slide 4 — As 3 camadas
+## Slide 5 — As 3 camadas
 **Título:** Quem faz o quê
 **Texto do slide:**
 
@@ -74,7 +84,7 @@ app.post("/notas", async (requisicao, resposta) => {        // vermelho = Contro
 
 > *Fala:* "O Model é o guardião dos dados e das regras. A View é a tela. O Controller é o maestro: recebe o pedido, chama o Model e devolve a resposta."
 
-## Slide 5 — Model
+## Slide 6 — Model
 **Título:** Model
 **Texto do slide:**
 - *Representa os dados e as regras de negócio da aplicação.*
@@ -84,7 +94,7 @@ app.post("/notas", async (requisicao, resposta) => {        // vermelho = Contro
 
 > *Fala:* "O Model é o guardião dos dados. Ele sabe como uma nota é estruturada, sabe validar se ela pode ser salva — por exemplo, título obrigatório — e conversa com o banco de dados. O que ele não sabe é como isso vai aparecer na tela. Pensem na cozinha de um restaurante: ela prepara o prato, mas não atende o cliente."
 
-## Slide 6 — View
+## Slide 7 — View
 **Título:** View
 **Texto do slide:**
 - *É a camada de apresentação: tudo o que o usuário vê e com que interage.*
@@ -94,7 +104,7 @@ app.post("/notas", async (requisicao, resposta) => {        // vermelho = Contro
 
 > *Fala:* "A View é tudo que o usuário enxerga: a tela, o HTML, o CSS, os botões. Ela recebe dados prontos e só se preocupa em mostrar bem. Ela não decide regra nenhuma. No restaurante, é o prato bem apresentado e o cardápio."
 
-## Slide 7 — Controller
+## Slide 8 — Controller
 **Título:** Controller
 **Texto do slide:**
 - *É o intermediário: recebe a requisição, aciona o Model e devolve a resposta.*
@@ -104,7 +114,7 @@ app.post("/notas", async (requisicao, resposta) => {        // vermelho = Contro
 
 > *Fala:* "O Controller é o maestro. Quando o usuário clica em salvar, é o Controller que recebe esse pedido, pede ao Model para salvar e devolve a resposta para a View. É o garçom: não cozinha e não é o prato, mas conecta o cliente à cozinha."
 
-## Slide 8 — Fluxo de uma requisição
+## Slide 9 — Fluxo de uma requisição
 **Título:** O caminho de um clique
 **Texto do slide (diagrama):**
 ```
@@ -115,7 +125,7 @@ Usuário clica  →  VIEW  →  ROTA  →  CONTROLLER  →  MODEL  →  BANCO
 
 > *Fala:* "O usuário clica na View, a requisição chega numa rota, a rota chama o Controller, o Controller pede ao Model, o Model fala com o banco, e a resposta volta até a tela."
 
-## Slide 9 — Vantagens
+## Slide 10 — Vantagens
 **Título:** Por que usar MVC?
 **Texto do slide:**
 1. **Manutenção** — Mudou o visual? Mexe só na View. Mudou a regra? Só no Model.
@@ -125,7 +135,7 @@ Usuário clica  →  VIEW  →  ROTA  →  CONTROLLER  →  MODEL  →  BANCO
 
 > *Fala:* "Por isso o MVC importa na prática: se eu quiser mudar o visual, mexo só na View. Se eu quiser mudar uma regra, mexo só no Model. Cada camada pode ser testada separadamente, e times diferentes trabalham em paralelo sem pisar no trabalho um do outro. Por isso os principais frameworks do mercado usam essa ideia."
 
-## Slide 10 — A receita para desenvolver em MVC
+## Slide 11 — A receita para desenvolver em MVC
 **Título:** 5 passos para criar qualquer funcionalidade
 **Texto do slide:**
 1. **Model** — o que fazer com os dados?
@@ -140,7 +150,7 @@ Usuário clica  →  VIEW  →  ROTA  →  CONTROLLER  →  MODEL  →  BANCO
 
 ## PRÁTICA — Desenvolvendo a funcionalidade "Excluir nota"
 
-## Slide 11 — Estrutura do projeto
+## Slide 12 — Estrutura do projeto
 **Título:** Organização das pastas
 **Texto do slide:**
 ```
@@ -157,7 +167,7 @@ app-mvc/
 
 > *Fala:* "Só olhando as pastas já dá pra saber onde cada coisa está. Isso é organização. Vou rodar o app e criar uma nota... Agora o cliente pediu: quer poder excluir notas. Vamos seguir a receita."
 
-## Slide 12 — Passo 1: Model
+## Slide 13 — Passo 1: Model
 **Título:** Passo 1 — Model: falar com o banco
 **Texto do slide:**
 ```js
@@ -173,7 +183,7 @@ static async remover(id) {
 
 > *Fala:* "Em qual camada fica o comando que apaga do banco? No Model! Primeiro ele valida a regra — o id precisa ser um número — e depois apaga. Reparem que ele não sabe nada de botão ou tela. O `$1` protege contra SQL Injection."
 
-## Slide 13 — Passo 2: Controller
+## Slide 14 — Passo 2: Controller
 **Título:** Passo 2 — Controller: receber e responder
 **Texto do slide:**
 ```js
@@ -190,7 +200,7 @@ async function remover(requisicao, resposta) {
 
 > *Fala:* "O Controller pega o id que veio na URL, pede ao Model para remover e responde 204 — 'deu certo, sem conteúdo'. Se o Model recusar, por exemplo com um id inválido, o catch devolve 400 com a mensagem de erro, e o servidor continua de pé. Ele orquestra, não acessa o banco diretamente."
 
-## Slide 14 — Passo 3: Rota
+## Slide 15 — Passo 3: Rota
 **Título:** Passo 3 — Rota: ligar a URL ao Controller
 **Texto do slide:**
 ```js
@@ -202,7 +212,7 @@ router.delete("/notas/:id", controller.remover);
 
 > *Fala:* "A rota é a porta de entrada. Quando chegar um DELETE em /api/notas/5, ela chama o Controller. Vejam: GET lista, POST cria, DELETE remove."
 
-## Slide 15 — Passo 4: View
+## Slide 16 — Passo 4: View
 **Título:** Passo 4 — View: o botão na tela
 **Texto do slide:**
 ```js
@@ -218,7 +228,7 @@ item.appendChild(botao);
 
 > *Fala:* "Na View só criamos o botão e mandamos o pedido. Nenhuma regra aqui. Se amanhã quiserem o botão vermelho, mexemos só aqui."
 
-## Slide 16 — Passo 5: Testar
+## Slide 17 — Passo 5: Testar
 **Título:** Passo 5 — Testar de ponta a ponta
 **Texto do slide:**
 - Criar uma nota → aparece na lista
@@ -229,7 +239,7 @@ item.appendChild(botao);
 
 ---
 
-## Slide 17 — Quiz
+## Slide 18 — Quiz
 **Título:** Hora do Quiz!
 **Texto do slide:**
 - Acesse: **kahoot.it**
@@ -238,7 +248,7 @@ item.appendChild(botao);
 
 > *Fala:* "Peguem o celular! Vamos ver se ficou claro." (Perguntas e respostas no item 9 do plano de aula.)
 
-## Slide 18 — Resumo
+## Slide 19 — Resumo
 **Título:** O que aprendemos hoje
 **Texto do slide:**
 - **Model** = dados e regras | **View** = tela | **Controller** = orquestra
@@ -248,7 +258,7 @@ item.appendChild(botao);
 
 > *Fala:* "Hoje vocês desenvolveram uma funcionalidade inteira em MVC. Com essa receita vocês conseguem criar editar, buscar, qualquer coisa — sempre camada por camada. Fica o desafio: desenvolver o Editar nota seguindo a mesma receita."
 
-## Slide 19 — Para estudar mais
+## Slide 20 — Para estudar mais
 **Título:** Referências
 **Texto do slide:**
 - GAMMA et al. *Padrões de Projeto*. Bookman, 2000.

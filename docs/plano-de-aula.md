@@ -42,11 +42,11 @@ Capacitar o aluno a **desenvolver uma funcionalidade de uma aplicação web segu
 
 | Etapa | Tempo | O que acontece | Recurso |
 |---|---|---|---|
-| 1. Abertura e problema | 3 min | Pergunta disparadora + mostrar rapidamente o `app-sem-mvc/server.js` (tudo misturado) | Slides 1–2, VS Code |
-| 2. Conceito essencial | 7 min | O que é MVC, papel de cada camada (com analogia do restaurante), fluxo de uma requisição e vantagens | Slides 3–10 |
-| 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada | Slides 11–16, VS Code, navegador |
-| 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 17 + Kahoot |
-| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + desafio para casa ("Editar nota") + referências para estudo | Slides 18–19 |
+| 1. Abertura e problema | 3 min | Pergunta disparadora e a dor da manutenção + mostrar rapidamente o `app-sem-mvc/server.js` (monólito sem organização) | Slides 1–3, VS Code |
+| 2. Conceito essencial | 7 min | A solução MVC, papel de cada camada (com analogia do restaurante), fluxo de uma requisição e vantagens | Slides 4–11 |
+| 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada | Slides 12–17, VS Code, navegador |
+| 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 18 + Kahoot |
+| 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + desafio para casa ("Editar nota") + referências para estudo | Slides 19–20 |
 
 ### Detalhamento da prática (etapa 3 — 12 min)
 
@@ -74,9 +74,9 @@ Rodar o app e criar uma nota para mostrar funcionando.
 | 4 | View | `public/script.js` | Botão "Excluir" em cada nota, que chama `DELETE /api/notas/:id` e recarrega a lista |
 | 5 | Teste | Navegador | Criar uma nota, excluir e ver a lista atualizar |
 
-> **Preparação antes da aula:** o repositório já contém a versão final do Model, Controller e Rota de `remover` (código de referência). Para a demonstração ao vivo, esses trechos são removidos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescritos durante a aula. Código do passo 4 (View) está no slide 14 de `conteudo-slides-mvc.md`.
+> **Preparação antes da aula:** o repositório já contém a versão final do Model, Controller e Rota de `remover` (código de referência). Para a demonstração ao vivo, esses trechos são removidos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescritos durante a aula. Código do passo 4 (View) está no slide 16 de `conteudo-slides-mvc.md`.
 
-**3.3 Pergunta de verificação (1 min, slide 16)** — única pausa para a turma responder: *"E se a regra fosse 'só excluir notas com mais de 1 dia'? Em qual camada?"* (Resposta: Model.) Se ninguém responder em ~10 segundos, dar a resposta e seguir.
+**3.3 Pergunta de verificação (1 min, slide 17)** — única pausa para a turma responder: *"E se a regra fosse 'só excluir notas com mais de 1 dia'? Em qual camada?"* (Resposta: Model.) Se ninguém responder em ~10 segundos, dar a resposta e seguir.
 
 ## 7. Recursos Didáticos
 - Slides (PowerPoint) — arquivo `aula-mvc.pptx` (PDF: `aula-mvc.pdf`); textos e falas em `conteudo-slides-mvc.md`
