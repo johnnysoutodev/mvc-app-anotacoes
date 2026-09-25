@@ -2,15 +2,17 @@
 
 **Prazo:** 24/09/2026 até 23h00 (um dia antes da aula-teste)
 
+**Para:** goliveira@sp.senai.br
+
 **Assunto:** Documentos para Avaliação Técnica - Processo Seletivo SENAI (Instrutor TI - 104-2026)
 
 **Anexos:**
-- [ ] Plano de aula (PDF) — exportar `plano-de-aula.md`
+- [ ] Plano de aula (PDF) — `plano-de-aula.pdf`
 - [ ] Apresentação da aula (PDF) — `aula-mvc.pdf`, exportado do PowerPoint
 - [ ] Currículo atualizado
 - [ ] Comprovantes de escolaridade
 - [ ] Comprovantes de experiência profissional
-- [ ] Link do portfólio
+- [ ] Link do portfólio (GitHub) — já no corpo do e-mail
 
 ---
 
@@ -25,7 +27,8 @@ Conforme solicitado, encaminho em anexo os documentos para a aula-teste prática
 - Currículo atualizado
 - Comprovantes de escolaridade
 - Comprovantes de experiência profissional
-- Portfólio: [link do portfólio]
+- Portfólio (GitHub): https://github.com/johnnysoutodev
+- Projeto usado na aula: https://github.com/johnnysoutodev/mvc-app-anotacoes
 
 A aula será prática: a partir de uma situação de aprendizagem, desenvolverei ao vivo uma funcionalidade de uma aplicação web (Node.js, Express e PostgreSQL) passando pelas camadas Model, View e Controller. Ao final, farei a verificação de aprendizagem com um quiz on-line.
 

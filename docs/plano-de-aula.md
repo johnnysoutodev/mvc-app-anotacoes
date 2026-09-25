@@ -6,7 +6,9 @@
 - **Modalidade:** Aula-teste prática (remota, via Teams)
 - **Público-alvo (simulado):** Alunos do curso Técnico em Desenvolvimento de Sistemas
 - **Pré-requisitos dos alunos:** noções de HTML, JavaScript e o que é um banco de dados
-- **Processo:** SENAI-SP — Instrutor de Formação Profissional III - TI (104-2026)
+- **Processo:** SENAI-SP — Instrutor de Formação Profissional III - TI (Desenvolvimento de Sistemas) — nº 104-2026
+- **Unidade:** Escola SENAI "Nadir Dias de Figueiredo" — Osasco/SP
+- **Repositório do projeto usado na aula:** https://github.com/johnnysoutodev/mvc-app-anotacoes
 - **Data da aula-teste:** 25/09/2026, 16h30
 
 ## 2. Situação de Aprendizagem (contextualização)
@@ -72,7 +74,7 @@ Rodar o app e criar uma nota para mostrar funcionando.
 | 4 | View | `public/script.js` | Botão "Excluir" em cada nota, que chama `DELETE /api/notas/:id` e recarrega a lista |
 | 5 | Teste | Navegador | Criar uma nota, excluir e ver a lista atualizar |
 
-> **Preparação antes da aula:** o repositório já contém o código do Model, Controller e Rota de `remover` (serve de "cola"). Para a demonstração ao vivo, apague esses trechos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescreva-os durante a aula. Código do passo 4 (View) está no slide 14 de `conteudo-slides-mvc.md`.
+> **Preparação antes da aula:** o repositório já contém a versão final do Model, Controller e Rota de `remover` (código de referência). Para a demonstração ao vivo, esses trechos são removidos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescritos durante a aula. Código do passo 4 (View) está no slide 14 de `conteudo-slides-mvc.md`.
 
 **3.3 Pergunta de verificação (1 min, slide 16)** — única pausa para a turma responder: *"E se a regra fosse 'só excluir notas com mais de 1 dia'? Em qual camada?"* (Resposta: Model.) Se ninguém responder em ~10 segundos, dar a resposta e seguir.
 
