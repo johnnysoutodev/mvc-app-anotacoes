@@ -4,7 +4,7 @@ Projeto de apoio para a aula-teste prática sobre MVC (25/09/2026).
 
 ## Estrutura
 
-- `docs/` — plano de aula, conteúdo dos slides e resposta de e-mail
+- `docs/` — plano de aula (com quiz e referências), conteúdo dos slides, e-mails (confirmação e envio dos documentos)
 - `app-mvc/` — app de anotações estruturado em MVC (Node + Express + Postgres)
 - `app-sem-mvc/` — mesma funcionalidade, tudo misturado em um único arquivo (exemplo de contraste)
 
