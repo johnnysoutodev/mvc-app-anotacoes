@@ -42,7 +42,7 @@ Capacitar o aluno a **desenvolver uma funcionalidade de uma aplicação web segu
 |---|---|---|---|
 | 1. Abertura e problema | 3 min | Pergunta disparadora + mostrar rapidamente o `app-sem-mvc/server.js` (tudo misturado) | Slides 1–2, VS Code |
 | 2. Conceito essencial | 7 min | O que é MVC, papel de cada camada (com analogia do restaurante), fluxo de uma requisição e vantagens | Slides 3–10 |
-| 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada, com perguntas à turma a cada passo | Slides 11–16, VS Code, navegador |
+| 3. **Prática: desenvolvendo em MVC** | 12 min | Tour pela estrutura do `app-mvc` e **desenvolvimento ao vivo da funcionalidade "Excluir nota"**, camada por camada | Slides 11–16, VS Code, navegador |
 | 4. Quiz de verificação | 5 min | 5 perguntas no Kahoot (ou similar) | Slide 17 + Kahoot |
 | 5. Síntese e fechamento | 3 min | Recapitular a "receita" de 5 passos + desafio para casa ("Editar nota") + referências para estudo | Slides 18–19 |
 
@@ -62,7 +62,7 @@ app-mvc/
 ```
 Rodar o app e criar uma nota para mostrar funcionando.
 
-**3.2 Desenvolvimento ao vivo: "Excluir nota" (9 min)** — seguir a receita, sempre perguntando à turma *"em qual camada isso entra?"* antes de escrever:
+**3.2 Desenvolvimento ao vivo: "Excluir nota" (9 min)** — seguir a receita. Antes de cada passo, lançar a pergunta de forma retórica — *"em qual camada isso entra? No Model!"* — e já responder, para manter a turma engajada sem perder tempo:
 
 | Passo | Camada | Arquivo | O que escrever |
 |---|---|---|---|
@@ -74,7 +74,7 @@ Rodar o app e criar uma nota para mostrar funcionando.
 
 > **Preparação antes da aula:** o repositório já contém o código do Model, Controller e Rota de `remover` (serve de "cola"). Para a demonstração ao vivo, apague esses trechos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescreva-os durante a aula. Código do passo 4 (View) está no slide 14 de `conteudo-slides-mvc.md`.
 
-**3.3 Pergunta de fechamento da prática (1 min)** — *"Se amanhã o cliente pedir para o botão ficar vermelho, qual arquivo eu altero? E se pedir que só notas com mais de 1 dia possam ser excluídas?"* (Resposta: View / Model.)
+**3.3 Pergunta de verificação (1 min, slide 16)** — única pausa para a turma responder: *"E se a regra fosse 'só excluir notas com mais de 1 dia'? Em qual camada?"* (Resposta: Model.) Se ninguém responder em ~10 segundos, dar a resposta e seguir.
 
 ## 7. Recursos Didáticos
 - Slides (PowerPoint) — arquivo `aula-mvc.pptx` (PDF: `aula-mvc.pdf`); textos e falas em `conteudo-slides-mvc.md`
@@ -86,18 +86,16 @@ Rodar o app e criar uma nota para mostrar funcionando.
 
 ## 8. Avaliação (verificação de aprendizagem)
 
-**Avaliação formativa (durante a aula)**
-- Perguntas orais a cada passo da prática: *"Em qual camada isso entra?"*
-- Pergunta de fechamento da prática (item 3.3)
+**Quiz (5 min) — instrumento principal** — 5 perguntas objetivas, 4 alternativas cada, no Kahoot. Meta: pelo menos 80% de acertos na turma. O ranking do Kahoot mostra na hora quem acompanhou.
 
-**Quiz (5 min)** — 5 perguntas objetivas, 4 alternativas cada. Meta: pelo menos 80% de acertos na turma.
+**Pergunta de verificação (1 min)** — uma única pergunta oral durante a prática (item 3.3), para checar se o aluno sabe em qual camada colocar uma nova regra.
 
 **Critérios de avaliação**
 
 | Critério | Tipo | Evidência |
 |---|---|---|
-| Identifica a responsabilidade de Model, View e Controller | Crítico | Quiz (perguntas 1–4) e perguntas orais |
-| Indica em qual camada implementar uma nova regra ou alteração visual | Crítico | Pergunta de fechamento da prática |
+| Identifica a responsabilidade de Model, View e Controller | Crítico | Quiz (perguntas 1–4) |
+| Indica em qual camada implementar uma nova regra ou alteração visual | Crítico | Pergunta de verificação (item 3.3) |
 | Reconhece as vantagens do MVC em relação ao código sem separação | Desejável | Quiz (pergunta 5) |
 | Participa e interage durante a construção ao vivo | Desejável | Observação do instrutor |
 
