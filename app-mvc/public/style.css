@@ -18,6 +18,7 @@ textarea,
 button {
   padding: 8px;
   font-size: 1rem;
+  font-family: inherit;
 }
 
 button {
@@ -36,4 +37,21 @@ ul {
 li {
   padding: 10px;
   border-bottom: 1px solid #ddd;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+li button {
+  background: #c8553d;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+#mensagem {
+  color: #c8553d;
 }

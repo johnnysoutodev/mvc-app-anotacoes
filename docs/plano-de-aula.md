@@ -68,8 +68,8 @@ Rodar o app e criar uma nota para mostrar funcionando.
 
 | Passo | Camada | Arquivo | O que escrever |
 |---|---|---|---|
-| 1 | Model | `src/models/Nota.js` | Método `remover(id)` com o `DELETE` no banco |
-| 2 | Controller | `src/controllers/notasController.js` | Função `remover` que lê o `id` da requisição, chama o Model e responde `204` |
+| 1 | Model | `src/models/Nota.js` | Método `remover(id)`: valida o id (regra) e executa o `DELETE` no banco |
+| 2 | Controller | `src/controllers/notasController.js` | Função `remover` que lê o `id` da requisição, chama o Model e responde `204` (ou `400` no `catch`) |
 | 3 | Rota | `src/routes/notasRoutes.js` | `router.delete("/notas/:id", controller.remover)` |
 | 4 | View | `public/script.js` | Botão "Excluir" em cada nota, que chama `DELETE /api/notas/:id` e recarrega a lista |
 | 5 | Teste | Navegador | Criar uma nota, excluir e ver a lista atualizar |

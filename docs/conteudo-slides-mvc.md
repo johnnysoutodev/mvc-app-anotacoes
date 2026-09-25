@@ -150,11 +150,15 @@ app-mvc/
 ```js
 // src/models/Nota.js
 static async remover(id) {
+  if (!Number.isInteger(Number(id))) {
+    throw new Error("Id inválido");
+  }
+
   await pool.query("DELETE FROM notas WHERE id = $1", [id]);
 }
 ```
 
-> *Fala:* "Pergunta: onde fica o comando que apaga do banco? No Model! Reparem que ele não sabe nada de botão ou tela. O `$1` protege contra SQL Injection."
+> *Fala:* "Em qual camada fica o comando que apaga do banco? No Model! Primeiro ele valida a regra — o id precisa ser um número — e depois apaga. Reparem que ele não sabe nada de botão ou tela. O `$1` protege contra SQL Injection."
 
 ## Slide 13 — Passo 2: Controller
 **Título:** Passo 2 — Controller: receber e responder
@@ -162,12 +166,16 @@ static async remover(id) {
 ```js
 // src/controllers/notasController.js
 async function remover(requisicao, resposta) {
-  await Nota.remover(requisicao.params.id);
-  resposta.status(204).send();
+  try {
+    await Nota.remover(requisicao.params.id);
+    resposta.status(204).send();
+  } catch (erro) {
+    resposta.status(400).json({ erro: erro.message });
+  }
 }
 ```
 
-> *Fala:* "O Controller pega o id que veio na URL, pede ao Model para remover e responde 204 — 'deu certo, sem conteúdo'. Ele orquestra, não acessa o banco diretamente."
+> *Fala:* "O Controller pega o id que veio na URL, pede ao Model para remover e responde 204 — 'deu certo, sem conteúdo'. Se o Model recusar, por exemplo com um id inválido, o catch devolve 400 com a mensagem de erro, e o servidor continua de pé. Ele orquestra, não acessa o banco diretamente."
 
 ## Slide 14 — Passo 3: Rota
 **Título:** Passo 3 — Rota: ligar a URL ao Controller

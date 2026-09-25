@@ -1,8 +1,12 @@
 const Nota = require("../models/Nota");
 
 async function listar(requisicao, resposta) {
-  const notas = await Nota.listarTodas();
-  resposta.json(notas);
+  try {
+    const notas = await Nota.listarTodas();
+    resposta.json(notas);
+  } catch (erro) {
+    resposta.status(500).json({ erro: "Erro ao listar notas" });
+  }
 }
 
 async function criar(requisicao, resposta) {
@@ -16,8 +20,12 @@ async function criar(requisicao, resposta) {
 }
 
 async function remover(requisicao, resposta) {
-  await Nota.remover(requisicao.params.id);
-  resposta.status(204).send();
+  try {
+    await Nota.remover(requisicao.params.id);
+    resposta.status(204).send();
+  } catch (erro) {
+    resposta.status(400).json({ erro: erro.message });
+  }
 }
 
 module.exports = { listar, criar, remover };
