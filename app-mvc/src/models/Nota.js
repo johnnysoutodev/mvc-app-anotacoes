@@ -21,13 +21,7 @@ class Nota {
     return resultado.rows[0];
   }
 
-  static async remover(id) {
-    if (!Number.isInteger(Number(id))) {
-      throw new Error("Id inválido");
-    }
-
-    await pool.query("DELETE FROM notas WHERE id = $1", [id]);
-  }
+  
 
   static async alternarFavorita(id) {
     if (!Number.isInteger(Number(id))) {

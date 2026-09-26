@@ -34,13 +34,7 @@ async function carregarNotas() {
     }
     item.appendChild(texto);
 
-    const botao = document.createElement("button");
-    botao.textContent = "Excluir";
-    botao.onclick = async () => {
-      await fetch(`/api/notas/${nota.id}`, { method: "DELETE" });
-      carregarNotas();
-    };
-    item.appendChild(botao);
+    
 
     listaNotas.appendChild(item);
   });

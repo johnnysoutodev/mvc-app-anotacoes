@@ -19,14 +19,7 @@ async function criar(requisicao, resposta) {
   }
 }
 
-async function remover(requisicao, resposta) {
-  try {
-    await Nota.remover(requisicao.params.id);
-    resposta.status(204).send();
-  } catch (erro) {
-    resposta.status(400).json({ erro: erro.message });
-  }
-}
+
 
 async function favoritar(requisicao, resposta) {
   try {
@@ -37,4 +30,4 @@ async function favoritar(requisicao, resposta) {
   }
 }
 
-module.exports = { listar, criar, remover, favoritar };
+module.exports = { listar, criar, favoritar };
