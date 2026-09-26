@@ -233,9 +233,9 @@ item.appendChild(botao);
 **Texto do slide:**
 - Criar uma nota → aparece na lista
 - Clicar em "Excluir" → some da lista e do banco
-- **Pergunta:** e se a regra fosse "só excluir notas com mais de 1 dia"? Em qual camada?
+- **Pergunta:** a regra "as favoritas aparecem primeiro" está na View ou no Model?
 
-> *Fala:* "Funcionou! E respondendo: a regra de negócio entraria no Model. A mudança fica isolada — esse é o ganho do MVC."
+> *Fala:* "Funcionou! Agora, uma pergunta para vocês: a regra 'as favoritas aparecem primeiro' — ela está na View ou no Model? Parece coisa da tela, porque é a tela que mostra a ordem. Mas é regra de negócio, então está no Model: é o `ORDER BY favorita DESC` no `Nota.js`. (Abrir o Nota.js e mostrar a linha com o comentário 'Regra de negócio'.) A View só exibe na ordem que recebe. Se amanhã a regra mudar, mexemos só no Model — esse é o ganho do MVC."
 
 ---
 

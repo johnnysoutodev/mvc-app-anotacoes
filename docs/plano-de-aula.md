@@ -76,7 +76,7 @@ Rodar o app e criar uma nota para mostrar funcionando.
 
 > **Preparação antes da aula:** o repositório já contém a versão final do Model, Controller e Rota de `remover` (código de referência). Para a demonstração ao vivo, esses trechos são removidos em uma branch de ensaio (ex.: `git checkout -b aula-ao-vivo`) e reescritos durante a aula. Código do passo 4 (View) está no slide 16 de `conteudo-slides-mvc.md`.
 
-**3.3 Pergunta de verificação (1 min, slide 17)** — única pausa para a turma responder: *"E se a regra fosse 'só excluir notas com mais de 1 dia'? Em qual camada?"* (Resposta: Model.) Se ninguém responder em ~10 segundos, dar a resposta e seguir.
+**3.3 Pergunta de verificação (1 min, slide 17)** — única pausa para a turma responder: *"A regra 'as favoritas aparecem primeiro' está na View ou no Model?"* (Resposta: Model — o `ORDER BY favorita DESC` em `Nota.js`; abrir o arquivo e mostrar a linha.) A regra já existe no código, então não há nada novo a programar. Se ninguém responder em ~10 segundos, dar a resposta e seguir.
 
 ## 7. Recursos Didáticos
 - Slides (PowerPoint) — arquivo `aula-mvc.pptx` (PDF: `aula-mvc.pdf`); textos e falas em `conteudo-slides-mvc.md`
@@ -97,7 +97,7 @@ Rodar o app e criar uma nota para mostrar funcionando.
 | Critério | Tipo | Evidência |
 |---|---|---|
 | Identifica a responsabilidade de Model, View e Controller | Crítico | Quiz (perguntas 1–4) |
-| Indica em qual camada implementar uma nova regra ou alteração visual | Crítico | Pergunta de verificação (item 3.3) |
+| Identifica em qual camada fica uma regra de negócio | Crítico | Pergunta de verificação (item 3.3) |
 | Reconhece as vantagens do MVC em relação ao código sem separação | Desejável | Quiz (pergunta 5) |
 | Participa e interage durante a construção ao vivo | Desejável | Observação do instrutor |
 
